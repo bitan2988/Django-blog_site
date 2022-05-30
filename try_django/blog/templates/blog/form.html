@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+    {% if title %}
+        <h1>{{ title }}</h1>
+    {% endif %}
+{% comment %} 
+    action='.' means submit to the same view which is rendering it
+    csrf_token is a security token so that no other web-page can submit this data
+{% endcomment %}
+    <form method='POST' action='.' > 
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type='Submit'>Send</button> 
+        {% comment %} 
+        <input type="text" name="Full_name" placeholder='Enter full_name'>
+        <input type="email" name='email' placeholder='Enter email-id'>
+        <textarea name='content'></textarea>
+        {% endcomment %}
+    </form>
+
+{% endblock %}
